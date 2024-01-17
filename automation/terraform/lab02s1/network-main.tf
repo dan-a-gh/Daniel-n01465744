@@ -1,10 +1,11 @@
-# network-main.tf
-# ++++++++++++++++++++++++++++++++++++
-# Created by Daniel Allison
-# ++++++++++++++++++++++++++++++++++++
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# + network-main.tf                                                           +
+# + Created by Daniel Allison                                                 +
+# + n01465744                                                                 +
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # PROVIDERS
-# ++++++++++++++++++++++++++++++++++++
+# =============================================================================
 
 terraform {
   required_providers {
@@ -20,13 +21,15 @@ provider "azurerm" {
 }
 
 # RESOURCES
-# ++++++++++++++++++++++++++++++++++++
+# =============================================================================
 
 resource "azurerm_resource_group" "network-rg" {
   name     = "network-rg"
   location = "Canada Central"
 }
 
+# Network 1
+# -----------------------------------------------------------------------------
 resource "azurerm_network_security_group" "network-nsg1" {
   name                = "network-nsg1"
   location            = azurerm_resource_group.network-rg.location
