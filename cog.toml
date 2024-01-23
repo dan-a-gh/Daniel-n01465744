@@ -8,7 +8,6 @@ skip_untracked = false
 pre_bump_hooks = [
     "terraform fmt",
     "terraform validate",
-    "echo 'bumping from {{latest}} to {{version}}'",
 ]
 post_bump_hooks = [
     "git push",
