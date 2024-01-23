@@ -2,6 +2,20 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.2.0 - 2024-01-23
+#### Bug Fixes
+- Remove echo latest version from pre_bump_hooks - (2edb29b) - Daniel Allison
+- Remove terraform plan from cog pre_bump_hooks - (7a0a17b) - Daniel Allison
+- Add public_ip_address from azurerm_public_ip.linux-pip.id to ip_configuration in linux-nic - (6784b5c) - Daniel Allison
+#### Features
+- Add lab02s3, add linux vm and associated resources - (185eac1) - Daniel Allison
+- Add lab02s2, parameterized configuration - (6b26bcf) - Daniel Allison
+- Add network 2 - (7edc665) - Daniel Allison
+#### Miscellaneous Chores
+- **(version)** 0.1.0 - (f490993) - Daniel Allison
+
+- - -
+
 ## 0.1.0 - 2024-01-23
 #### Bug Fixes
 - Remove echo latest version from pre_bump_hooks - (d7d61dc) - Daniel Allison
