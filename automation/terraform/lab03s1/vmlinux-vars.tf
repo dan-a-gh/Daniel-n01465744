@@ -4,12 +4,22 @@
 # n01465744                                                                   #
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
+# LOCALS
+# =============================================================================
+
+locals {
+  Name         = "Terraform-Class"
+  Project      = "Learning"
+  ContactEmail = "n01465744"
+  Environment  = "Lab"
+}
+
 # VARIABLES
 # =============================================================================
 
 variable "linux_name" {
   type    = string
-  default = "n01465744_u-vm1"
+  default = "n01465744-u-vm1"
 }
 
 variable "linux_size" {

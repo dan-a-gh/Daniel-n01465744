@@ -18,6 +18,13 @@ resource "azurerm_network_interface" "linux_nic" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.linux_pip.id
   }
+
+  tags = {
+    name          = local.Name
+    project       = local.Project
+    contact_email = local.ContactEmail
+    environment   = local.Environment
+  }
 }
 
 resource "azurerm_public_ip" "linux_pip" {
@@ -26,6 +33,13 @@ resource "azurerm_public_ip" "linux_pip" {
   location            = azurerm_resource_group.network_rg.location
   allocation_method   = "Dynamic"
   domain_name_label   = var.linux_name
+
+  tags = {
+    name          = local.Name
+    project       = local.Project
+    contact_email = local.ContactEmail
+    environment   = local.Environment
+  }
 }
 
 resource "azurerm_linux_virtual_machine" "linux_vm" {
@@ -53,5 +67,12 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
     offer     = var.linux_os.offer
     sku       = var.linux_os.sku
     version   = var.linux_os.version
+  }
+
+  tags = {
+    name          = local.Name
+    project       = local.Project
+    contact_email = local.ContactEmail
+    environment   = local.Environment
   }
 }
