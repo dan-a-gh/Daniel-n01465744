@@ -9,12 +9,12 @@
 
 resource "azurerm_network_interface" "linux_nic" {
   count               = var.nb_count
-  name                = "${var.linux_name}${format("%1d", count.index + 1)}-nic"
+  name                = "${var.linux_name}-nic${format("%1d", count.index + 1)}"
   location            = azurerm_resource_group.network_rg.location
   resource_group_name = azurerm_resource_group.network_rg.name
 
   ip_configuration {
-    name                          = "${var.linux_name}${format("%1d", count.index + 1)}-ipconfig"
+    name                          = "${var.linux_name}-ipconfig${format("%1d", count.index + 1)}"
     subnet_id                     = azurerm_subnet.network_subnet1.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.linux_pip[count.index].id
@@ -64,7 +64,7 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
   os_disk {
     caching              = var.linux_os_disk.caching
     storage_account_type = var.linux_os_disk.storage_account_type
-    name                 = "${var.linux_name}${format("%1d", count.index + 1)}"
+    name                 = "${var.linux_name}-ssd${format("%1d", count.index + 1)}"
   }
 
   source_image_reference {
