@@ -9,12 +9,12 @@
 
 resource "azurerm_network_interface" "linux_nic" {
   count               = var.nb_count
-  name                = "${var.linux_name}${format("%2d", count.index + 1)}-nic"
+  name                = "${var.linux_name}${format("%1d", count.index + 1)}-nic"
   location            = azurerm_resource_group.network_rg.location
   resource_group_name = azurerm_resource_group.network_rg.name
 
   ip_configuration {
-    name                          = "${var.linux_name}${format("%2d", count.index + 1)}-ipconfig"
+    name                          = "${var.linux_name}${format("%1d", count.index + 1)}-ipconfig"
     subnet_id                     = azurerm_subnet.network_subnet1.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.linux_pip[count.index].id
@@ -30,7 +30,7 @@ resource "azurerm_network_interface" "linux_nic" {
 
 resource "azurerm_public_ip" "linux_pip" {
   count               = var.nb_count
-  name                = "${var.linux_name}${format("%2d", count.index + 1)}-pip"
+  name                = "${var.linux_name}-pip${format("%1d", count.index + 1)}"
   resource_group_name = azurerm_resource_group.network_rg.name
   location            = azurerm_resource_group.network_rg.location
   allocation_method   = "Dynamic"
@@ -46,12 +46,12 @@ resource "azurerm_public_ip" "linux_pip" {
 
 resource "azurerm_linux_virtual_machine" "linux_vm" {
   count               = var.nb_count
-  name                = "${var.linux_name}${format("%2d", count.index + 1)}"
+  name                = "${var.linux_name}${format("%1d", count.index + 1)}"
   resource_group_name = azurerm_resource_group.network_rg.name
   location            = azurerm_resource_group.network_rg.location
   size                = var.linux_size
   admin_username      = var.linux_admin_user
-  computer_name       = "${var.linux_name}${format("%2d", count.index + 1)}"
+  computer_name       = "${var.linux_name}${format("%1d", count.index + 1)}"
   network_interface_ids = [
     element(azurerm_network_interface.linux_nic[*].id, count.index + 1),
   ]
@@ -64,7 +64,7 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
   os_disk {
     caching              = var.linux_os_disk.caching
     storage_account_type = var.linux_os_disk.storage_account_type
-    name                 = "${var.linux_name}${format("%2d", count.index + 1)}"
+    name                 = "${var.linux_name}${format("%1d", count.index + 1)}"
   }
 
   source_image_reference {

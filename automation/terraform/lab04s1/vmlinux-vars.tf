@@ -19,7 +19,7 @@ locals {
 
 variable "linux_name" {
   type    = string
-  default = "n01465744-u-vm1"
+  default = "n01465744-u-vm"
 }
 
 variable "linux_size" {
