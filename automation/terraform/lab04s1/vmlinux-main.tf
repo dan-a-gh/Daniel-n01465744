@@ -34,7 +34,7 @@ resource "azurerm_public_ip" "linux_pip" {
   resource_group_name = azurerm_resource_group.network_rg.name
   location            = azurerm_resource_group.network_rg.location
   allocation_method   = "Dynamic"
-  domain_name_label   = var.linux_name
+  domain_name_label   = "${var.linux_name}${format("%1d", count.index + 1)}"
 
   tags = {
     name          = local.Name
