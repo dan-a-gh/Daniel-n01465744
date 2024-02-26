@@ -5,7 +5,7 @@
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
 output "net_rg" {
-  value = var.linux_rg
+  value = var.net_rg
 }
 
 output "linux_rg" {
