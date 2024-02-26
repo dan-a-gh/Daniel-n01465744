@@ -15,3 +15,35 @@ output "linux_rg_name" {
 output "windows_rg_name" {
   value = module.resource_groups.windows_rg.name
 }
+
+output "vnet_name" {
+  value = module.networking.vnet_name
+}
+
+output "vnet_addr_space" {
+  value = module.networking.vnet_addr_space
+}
+
+output "subnet1_name" {
+  value = module.networking.subnet1_name
+}
+
+output "subnet1_addr_space" {
+  value = module.networking.subnet1_addr_space
+}
+
+output "nsg1_name" {
+  value = module.networking.nsg1_name
+}
+
+output "subnet2_name" {
+  value = module.networking.subnet1_name
+}
+
+output "subnet2_addr_space" {
+  value = module.networking.subnet2_addr_space
+}
+
+output "nsg2_name" {
+  value = module.networking.nsg2_name
+}
