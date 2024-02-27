@@ -72,3 +72,22 @@ output "linux_private_ips" {
 output "linux_public_ips" {
   value = module.linux.linux_public_ips
 }
+
+# WINDOWS
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+output "windows_vm_hostnames" {
+  value = module.windows.windows_vm_hostnames
+}
+
+output "windows_fqdn" {
+  value = module.windows.windows_fqdn
+}
+
+output "windows_private_ips" {
+  value = module.windows.windows_private_ips
+}
+
+output "windows_public_ips" {
+  value = module.windows.windows_public_ips
+}

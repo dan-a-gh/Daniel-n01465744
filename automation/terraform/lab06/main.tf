@@ -114,3 +114,48 @@ module "linux" {
     }
   }
 }
+
+module "windows" {
+  source = "./modules/windows"
+  windows_rg = {
+    resource_group_name = module.resource_groups.windows_rg.name
+    location            = module.resource_groups.windows_rg.location
+  }
+
+  windows_vm = {
+    name = {
+      n01465744-w-vm1 = "Standard_B1s"
+      n01465744-w-vm2 = "Standard_B1ms"
+    }
+    admin_username = "n01465744"
+    admin_password = "Removal-Icing1-Secluding"
+    os_disk = {
+      caching              = "ReadWrite"
+      storage_account_type = "StandardSSD_LRS"
+    }
+    source_image_reference = {
+      publisher = "MicrosoftWindowsServer"
+      offer     = "WindowsServer"
+      sku       = "2016-Datacenter"
+      version   = "latest"
+    }
+    winrm_listener = "Http"
+  }
+
+  windows_avs = {
+    name                         = "windows_avs"
+    platform_fault_domain_count  = 2
+    platform_update_domain_count = 5
+  }
+
+  windows_nic = {
+    ip_configuration = {
+      subnet_id                     = module.networking.subnet2_id
+      private_ip_address_allocation = "Dynamic"
+    }
+  }
+
+  windows_pip = {
+    allocation_method = "Dynamic"
+  }
+}

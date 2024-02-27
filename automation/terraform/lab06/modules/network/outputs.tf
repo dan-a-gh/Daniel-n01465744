@@ -32,6 +32,10 @@ output "subnet2_addr_space" {
   value = azurerm_subnet.subnet2.address_prefixes
 }
 
+output "subnet2_id" {
+  value = azurerm_subnet.subnet2.id
+}
+
 output "nsg1_name" {
   value = azurerm_network_security_group.nsg1.name
 }
