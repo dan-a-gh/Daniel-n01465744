@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.6.0 - 2024-02-27
+#### Bug Fixes
+- **(lab06)** Output variable changed to network resource group - (de7ebcf) - Daniel Allison
+#### Features
+- **(lab06)** Add windows module - (e66725d) - Daniel Allison
+- **(lab06)** Add linux module - (333cad1) - Daniel Allison
+- **(lab06)** Add network module - (1e8ff32) - Daniel Allison
+- **(lab06)** Add root mod and child mod resource_group - (4e51ef9) - Daniel Allison
+#### Style
+- **(lab02s2)** terraform fmt network-vars.tf - (0407fa7) - Daniel Allison
+
+- - -
+
 ## 0.2.0 - 2024-01-23
 #### Bug Fixes
 - Remove echo latest version from pre_bump_hooks - (2edb29b) - Daniel Allison
