@@ -8,42 +8,42 @@
 # =============================================================================
 
 variable "rg" {
-  type = string
+  type    = string
   default = "network-rg"
 }
 
 variable "location" {
-  type = string
+  type    = string
   default = "Canada Central"
 }
 
 variable "vnet" {
-  type = string
+  type    = string
   default = "net"
 }
 
 variable "vnet-addr-space" {
-  type = list(string)
+  type    = list(string)
   default = ["10.0.0.0/16"]
 }
 
 variable "subnet1" {
-  type = string
+  type    = string
   default = "network-subnet1"
 }
 
 variable "subnet2" {
-  type = string
+  type    = string
   default = "network-subnet2"
 }
 
 variable "subnet1-addr-space" {
-  type = list(string)
+  type    = list(string)
   default = ["10.0.0.0/24"]
 }
 
 variable "subnet2-addr-space" {
-  type = list(string)
+  type    = list(string)
   default = ["10.0.1.0/24"]
 }
 
@@ -51,14 +51,14 @@ variable "nsg1" {
   type = object({
     name = string
     sec_rule = object({
-      name = string
-      priority = number
-      direction = string
-      access = string
-      protocol = string
-      source_port_range = string
-      destination_port_range = string
-      source_address_prefix = string
+      name                       = string
+      priority                   = number
+      direction                  = string
+      access                     = string
+      protocol                   = string
+      source_port_range          = string
+      destination_port_range     = string
+      source_address_prefix      = string
       destination_address_prefix = string
     })
   })
@@ -82,20 +82,20 @@ variable "nsg2" {
   type = object({
     name = string
     sec_rule = list(object({
-      name = string
-      priority = number
-      direction = string
-      access = string
-      protocol = string
-      source_port_range = string
-      destination_port_range = string
-      source_address_prefix = string
+      name                       = string
+      priority                   = number
+      direction                  = string
+      access                     = string
+      protocol                   = string
+      source_port_range          = string
+      destination_port_range     = string
+      source_address_prefix      = string
       destination_address_prefix = string
     }))
   })
   default = {
     name = "network-nsg2"
-    sec_rule = [ {
+    sec_rule = [{
       name                       = "rule1"
       priority                   = 100
       direction                  = "Inbound"
@@ -105,18 +105,18 @@ variable "nsg2" {
       destination_port_range     = "3389"
       source_address_prefix      = "*"
       destination_address_prefix = "*"
-    },
+      },
 
-    {
-      name                       = "rule2"
-      priority                   = 200
-      direction                  = "Inbound"
-      access                     = "Allow"
-      protocol                   = "Tcp"
-      source_port_range          = "*"
-      destination_port_range     = "5985"
-      source_address_prefix      = "*"
-      destination_address_prefix = "*"
-    } ]
+      {
+        name                       = "rule2"
+        priority                   = 200
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "5985"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }]
   }
 }
