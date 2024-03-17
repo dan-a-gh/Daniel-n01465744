@@ -1,0 +1,26 @@
+[linux]
+n01465744-c-vm1.canadacentral.cloudapp.azure.com
+n01465744-c-vm2.canadacentral.cloudapp.azure.com
+
+[windows]
+n01465744-w-vm1.canadacentral.cloudapp.azure.com
+
+[os:children]
+linux
+windows
+
+[windows:vars]
+ansible_user = n01465744
+ansible_password = "Removal-Icing1-Secluding"
+ansible_connection = winrm
+ansible_port = 5985
+ansible_winrm_transport = ntlm
+ansible_winrm_server_cert_validation = ignore
+ansible_become_method = runas
+ansible_become_user = n01465744
+
+[linux:vars]
+ansible_user = n01465744
+ansible_ssh_private_key_file = ~/.ssh/id_rsa
+ansible_become_method = sudo
+ansible_become_user = root
