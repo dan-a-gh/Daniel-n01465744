@@ -1,5 +1,5 @@
 ---
-- name: lab08
+- name: lab08s1p1
   hosts: linux
   tasks:
     - name: Install cifs-utils on linux
@@ -7,4 +7,4 @@
         name:
           - cifs-utils
         state: latest
-      
+...
