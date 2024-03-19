@@ -1,0 +1,25 @@
+---
+- name: lab08s1p2
+  hosts: linux
+  tasks:
+    - name: Create user4000
+      ansible.builtin.user:
+        name: user4000
+        uid: 5000
+        state: present
+    - name: Create cloudadmins user
+      ansible.builtin.group:
+        name: cloudadmins
+        gid: 3000
+        state: present
+    - name: Install Apache httpd, nmap
+      ansible.builtin.dnf:
+        name:
+          - httpd
+          - nmap
+        state: latest
+    - name: Auto-start Apache httpd on system reboot
+      ansible.builtin.systemd:
+        name: httpd
+        enabled: true
+...
