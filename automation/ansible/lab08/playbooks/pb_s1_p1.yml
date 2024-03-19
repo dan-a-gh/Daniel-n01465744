@@ -1,0 +1,10 @@
+---
+- name: lab08
+  hosts: linux
+  tasks:
+    - name: Install cifs-utils on linux
+      ansible.builtin.dnf:
+        name:
+          - cifs-utils
+        state: latest
+      
