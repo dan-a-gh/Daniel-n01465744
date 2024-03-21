@@ -9,10 +9,24 @@
         mode: '444'
         group: cloudadmins
         owner: user4000
+
 - name: lab08s1p3 Play2
   hosts: linux
   tasks:
     - name: Change timezone to America/Edmonton
       community.general.timezone:
         name: America/Edmonton
+
+- name: lab08s1p4 Play3
+  hosts: n01465744-c-vm2.canadacentral.cloudapp.azure.com
+  tasks:
+    - name: Create devops group
+      ansible.builtin.group:
+        name: devops
+        state: present
+    - name: Create user devops1
+      ansible.builtin.user:
+        name: devops1
+        uid: 2500
+        group: devops
 ...
