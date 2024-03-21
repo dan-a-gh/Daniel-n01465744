@@ -1,0 +1,28 @@
+---
+- name: lab08s2p1
+  vars_files:
+    - vars/userinfo
+  tasks:
+    - name: Create grouplist1
+      ansible.builtin.group:
+        name: "{{ grouplist1 }}"
+        state: present
+    - name: Create grouplist2
+      ansible.builtin.group:
+        name: "{{ grouplist2 }}"
+        state: present
+    - name: Create user10
+      ansible.builtin.user:
+        name: "{{ userlist1 }}"
+        uid: 1800
+        group: "{{ grouplist1 }}"
+    - name: Create user20
+      ansible.builtin.user:
+        name: "{{ userlist2 }}"
+        uid: 1900
+        shell: /bin/bash
+        home: /home/"{{ userlist2 }}"
+        append: true
+        groups: "{{ grouplist2 }}"
+  hosts: n01465744-c-vm1.canadacentral.cloudapp.azure.com
+...

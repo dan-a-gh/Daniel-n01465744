@@ -1,0 +1,9 @@
+---
+- name: lab08s3p2
+  hosts: linux
+  tasks:
+    - name: Install ypserv
+      ansible.builtin.dnf:
+        name: "{{ packages }}"
+        state: latest
+...

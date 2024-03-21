@@ -1,0 +1,9 @@
+---
+- name: lab08s3p1
+  hosts: n01465744-c-vm1.canadacentral.cloudapp.azure.com
+  tasks:
+    - name: Install bind and evolution
+      ansible.builtin.dnf:
+        name: "{{ packages }}"
+        state: latest
+...
