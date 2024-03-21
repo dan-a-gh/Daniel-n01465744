@@ -1,0 +1,18 @@
+---
+- name: lab08s1p3 Play1
+  hosts: n01465744-c-vm1.canadacentral.cloudapp.azure.com
+  tasks:
+    - name: Copy /etc/issue to vm1
+      ansible.builtin.copy:
+        src: /etc/issue
+        dest: /etc/issue
+        mode: '444'
+        group: cloudadmins
+        owner: user4000
+- name: lab08s1p3 Play2
+  hosts: linux
+  tasks:
+    - name: Change timezone to America/Edmonton
+      community.general.timezone:
+        name: America/Edmonton
+...
