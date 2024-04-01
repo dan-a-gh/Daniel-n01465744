@@ -1,0 +1,12 @@
+---
+- name: lab09s2p2
+  hosts: n01465744-c-vm1.canadacentral.cloudapp.azure.com
+  tasks:
+    - name: Gather package information
+      ansible.builtin.package_facts:
+        manager: auto
+    - name: Display setup package version
+      debug:
+        msg:
+          - "setup pkg ver: {{ packages['setup'][0].version }}"
+...
