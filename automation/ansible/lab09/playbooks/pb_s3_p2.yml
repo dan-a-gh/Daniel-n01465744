@@ -1,0 +1,15 @@
+---
+- name: lab09s3p2
+  hosts: linux
+  vars:
+    user: n01465744
+  tasks:
+    - name: Gather user information
+      command: cat /etc/passwd
+      register: users
+    
+    - name: Shows which servers have {{ user }} user
+      debug:
+        msg: "This server has {{ user }} user"
+      when: users.stdout.find(user) != -1
+...
