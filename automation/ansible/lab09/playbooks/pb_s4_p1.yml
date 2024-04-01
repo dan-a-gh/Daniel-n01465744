@@ -1,0 +1,11 @@
+---
+- name: lab09s4p1
+  hosts: linux
+  tasks:
+    - name: Create users
+      ansible.builtin.user:
+        name: "{{ item['name'] }}"
+        uid: "{{ item['uid'] }}"
+        state: present
+      loop: "{{ userlist }}"
+...
