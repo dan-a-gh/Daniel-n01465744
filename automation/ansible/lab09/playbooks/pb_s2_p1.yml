@@ -1,0 +1,14 @@
+---
+- name: lab09s2p1
+  hosts: n01465744-w-vm1.canadacentral.cloudapp.azure.com
+  tasks:
+    - name: Display all node facts
+      debug:
+        var: ansible_facts
+    - name: Display FQDN, IPv4 address, short hostname
+      debug:
+        msg:
+          - "FQDN: {{ ansible_facts['fqdn'] }}"
+          - "Hostname: {{ ansible_facts['hostname'] }}"
+#         - "IPv4 address: {{ ansible_facts['default_ipv4']['address'] }}"
+...
