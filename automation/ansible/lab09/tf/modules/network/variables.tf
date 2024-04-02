@@ -30,7 +30,7 @@ variable "subnet2" {
 variable "nsg1" {
   type = object({
     name = string
-    sec_rule = object({
+    sec_rule = list(object({
       name                       = string
       priority                   = number
       direction                  = string
@@ -40,7 +40,7 @@ variable "nsg1" {
       destination_port_range     = string
       source_address_prefix      = string
       destination_address_prefix = string
-    })
+    }))
   })
 }
 

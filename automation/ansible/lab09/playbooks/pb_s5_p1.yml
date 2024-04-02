@@ -1,0 +1,23 @@
+---
+- name: lab09s5p1
+  hosts: n01465744-c-vm1.canadacentral.cloudapp.azure.com
+  tasks:
+    - name: Install Apache httpd
+      ansible.builtin.dnf:
+        name: httpd
+        state: latest
+      notify: restart_httpd
+    - name: Add hostname to index.html
+      ansible.builtin.lineinfile:
+        path: /var/www/html/index.html
+        state: present
+        create: true
+        insertafter: EOF
+        line: "{{ ansible_facts['hostname'] }}"
+  handlers:
+    - name: restart_httpd
+      ansible.builtin.systemd:
+        name: httpd.service
+        enabled: true
+        state: restarted
+...

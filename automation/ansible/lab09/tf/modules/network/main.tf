@@ -25,18 +25,25 @@ resource "azurerm_network_security_group" "nsg1" {
   name                = var.nsg1.name
   location            = var.vnet.location
   resource_group_name = var.vnet.resource_group_name
+}
 
-  security_rule {
-    name                       = var.nsg1.sec_rule.name
-    priority                   = var.nsg1.sec_rule.priority
-    direction                  = var.nsg1.sec_rule.direction
-    access                     = var.nsg1.sec_rule.access
-    protocol                   = var.nsg1.sec_rule.protocol
-    source_port_range          = var.nsg1.sec_rule.source_port_range
-    destination_port_range     = var.nsg1.sec_rule.destination_port_range
-    source_address_prefix      = var.nsg1.sec_rule.source_address_prefix
-    destination_address_prefix = var.nsg1.sec_rule.destination_address_prefix
+resource "azurerm_network_security_rule" "nsr_nsg1" {
+  for_each = {
+    for index, nsr in var.nsg1.sec_rule :
+    nsr.name => nsr
   }
+  resource_group_name         = var.vnet.resource_group_name
+  network_security_group_name = var.nsg1.name
+  name                        = each.value.name
+  priority                    = each.value.priority
+  direction                   = each.value.direction
+  access                      = each.value.access
+  protocol                    = each.value.protocol
+  source_port_range           = each.value.source_port_range
+  destination_port_range      = each.value.destination_port_range
+  source_address_prefix       = each.value.source_address_prefix
+  destination_address_prefix  = each.value.destination_address_prefix
+  depends_on                  = [azurerm_network_security_group.nsg1]
 }
 
 resource "azurerm_subnet_network_security_group_association" "network_snsga1" {
