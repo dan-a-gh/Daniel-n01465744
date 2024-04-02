@@ -1,0 +1,32 @@
+---
+- name: lab09s5p2
+  hosts: n01465744-c-vm2.canadacentral.cloudapp.azure.com
+  vars:
+    web_packages: httpd, mariadb-server
+  tasks:
+    - name: Install {{ web_packages }}
+      ansible.builtin.dnf:
+        name: "{{ web_packages }}"
+        state: latest
+      notify: restart_package_services
+    - name: Add hostname to index.html
+      ansible.builtin.lineinfile:
+        path: /var/www/html/index.html
+        state: present
+        create: true
+        insertafter: EOF
+        line: "{{ ansible_facts['hostname'] }}"
+  handlers:
+    - name: restart Apache web server
+      ansible.builtin.systemd:
+        name: httpd.service
+        enabled: true
+        state: restarted
+      listen: restart_package_services
+    - name: restart mariadb server
+      ansible.builtin.systemd:
+        name: mariadb.service
+        enabled: true
+        state: restarted
+      listen: restart_package_services
+...
