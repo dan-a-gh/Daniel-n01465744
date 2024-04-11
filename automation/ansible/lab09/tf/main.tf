@@ -129,8 +129,8 @@ module "linux" {
   linux_pip = {
     allocation_method = "Dynamic"
   }
-  public_key  = "/var/home/danielallison/.ssh/id_rsa.pub"
-  private_key = "/var/home/danielallison/.ssh/id_rsa"
+  public_key  = data.azurerm_key_vault_secret.id_rsa_pub.value
+  private_key = data.azurerm_key_vault_secret.id_rsa.value
   linux_provisioner = {
     remote_exec = {
       connection = {
