@@ -120,9 +120,9 @@ module "linux" {
       storage_account_type = "Premium_LRS"
     }
     source_image_reference = {
-      publisher = "OpenLogic"
-      offer     = "CentOs"
-      sku       = "8_2-gen2"
+      publisher = "almalinux"
+      offer     = "almalinux-x86_64"
+      sku       = "9-gen2"
       version   = "latest"
     }
   }
