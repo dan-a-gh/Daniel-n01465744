@@ -1,0 +1,26 @@
+---
+- name: Lab10s1p1
+  hosts: n01465744-c-vm1.canadacentral.cloudapp.azure.com
+  tasks:
+    - name: Create empty file on localhost
+      ansible.builtin.file:
+        path: /tmp/locfile
+        state: touch
+        mode: '0444'
+      delegate_to: localhost
+    - name: Copy file to managed nodes
+      ansible.builtin.copy:
+        src: /tmp/locfile
+        dest: /tmp/locfile
+        mode: '0444'
+        group: root
+        owner: n01465744
+        setype: etc_t
+    - name: Display status of /tmp/locfile
+      ansible.builtin.stat:
+        path: /tmp/locfile
+    - name: Create empty file
+      ansible.builtin.file:
+        path: ~/emptyfile
+        state: touch
+...
