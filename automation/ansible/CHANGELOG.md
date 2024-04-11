@@ -2,6 +2,26 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.9.0 - 2024-04-11
+#### Bug Fixes
+- **(lab09)** Change linux provisioner to use Azure Key Vault for ssh key - (40c7b6a) - Daniel Allison
+- Add Codespaces directory prefix to Ansible inventoryfor hosts file - (b9d5faa) - Daniel Allison
+#### Features
+- **(lab09)** Add playbook that installs, enables, and restarts Apache web server and mariadb-server - (6d2dabe) - Daniel Allison
+- **(lab09)** Add playbook that adds text if kernel and distro version match respective other values - (2fb76a6) - Daniel Allison
+- **(lab09)** Add playbook that checks if user is present on server - (245734a) - Daniel Allison
+- **(lab09)** Add playbook that installs dnf packages when defined - (06b0edd) - Daniel Allison
+- **(lab09)** Add playbook to display information about setup package - (cd531be) - Daniel Allison
+- **(lab09)** Add playbook to display Windows node facts - (8d9149e) - Daniel Allison
+- **(lab09)** Add playbook that displays debug info - (b8d723c) - Daniel Allison
+- nsg1 net sec rule refactored to accept multiple arguments. Added rule to accept inbound on port 80 / http. Added playbook that creates Apache web server with trivial static webpage. - (0e0179c) - Daniel Allison
+- Add playbook that installs packages if sufficient space available - (f7e8cee) - Daniel Allison
+- Add playbook that loops through userlist to create users from group vars file - (6fe3ab7) - Daniel Allison
+#### Refactoring
+- Store ssh keys in Azure Key Vault - (b4635ba) - dan-a-gh
+
+- - -
+
 ## 0.8.0 - 2024-03-21
 #### Features
 - **(lab07)** Add lab07 related files. - (8e43ef0) - Daniel Allison
